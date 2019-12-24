@@ -1,0 +1,12 @@
+{
+    "name": "pode-yaml-example",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "./rest-api-yaml.ps1"
+    },
+    "modules": {
+        "Pode.Yaml": "1.0.0"
+    },
+    "author": "Matthew Kelly (Badgerati)",
+    "license": "MIT"
+}
