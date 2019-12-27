@@ -26,11 +26,51 @@ or you can let Pode install it for you locally, by adding the following into you
 
 ### Body Parser
 
-You'll need to first import the module, and then enable it as a body-parser within your server's scriptblock:
+You can set this module to be used to parse Request payloads, that have relevant Content-Type. You'll need to first import the module, and then enable it as a body-parser within your server's scriptblock:
 
 ```powershell
 Import-PodeModule -Name Pode.Yaml -Now
 Enable-PodeYamlBodyParser
+```
+
+When the parser runs it will either set the event's `Data` object to be:
+
+* A single hashtable - if one YAML document is supplied
+* An array of hashtables - if multiple YAML documents are supplied
+
+For example, if a Request comes in with the following payload:
+
+```yaml
+---
+name: bob
+```
+
+Then you can access the `name` in a Route via the event parameters `Data` object:
+
+```powershell
+Add-PodeRoute -Method Get -Path '/' -ScriptBlock {
+    param($e)
+    $e.Data.name | Out-PodeHost
+}
+```
+
+Or if the request had multiple documents:
+
+```yaml
+---
+name: bob
+
+---
+name: bill
+```
+
+Then the second `name` is accessible as follows:
+
+```powershell
+Add-PodeRoute -Method Get -Path '/' -ScriptBlock {
+    param($e)
+    $e.Data[0].name | Out-PodeHost
+}
 ```
 
 ### Response
@@ -39,10 +79,16 @@ You can respond back with YAML in a Route as follows:
 
 ```powershell
 Add-PodeRoute -Method Get -Path '/' -ScriptBlock {
-    Write-PodeYamlResponse -Value @{ Name = 'example' }
+    Write-PodeYamlResponse -Value @{ Name = 'bob' }
 }
+```
+
+This will write back to the client the follow payload:
+
+```yaml
+name: bob
 ```
 
 ### Content Type
 
-The default content type expected on the request, and used on the response is `application/x-yaml`. You can change this by specifying the `-ContentType` parameter on the above `PodeYaml` functions.
+The default Content-Type expected on the request, and used on the response is `application/x-yaml`. You can change this by specifying the `-ContentType` parameter on the above `PodeYaml` functions.
