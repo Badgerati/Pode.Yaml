@@ -23,7 +23,7 @@
     Copyright = 'Copyright (c) 2019 Matthew Kelly (Badgerati), licensed under the MIT License.'
 
     # Description of the functionality provided by this module
-    Description = 'A YAML Requesta dn Response extension module for Pode'
+    Description = 'A YAML Request and Response parser extension module for Pode'
 
     # Minimum version of the Windows PowerShell engine required by this module
     PowerShellVersion = '5.0'

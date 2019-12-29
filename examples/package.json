@@ -5,6 +5,7 @@
         "start": "./rest-api-yaml.ps1"
     },
     "modules": {
+        "powershell-yaml": "latest",
         "Pode.Yaml": "1.0.0"
     },
     "author": "Matthew Kelly (Badgerati)",
