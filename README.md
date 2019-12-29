@@ -1,5 +1,9 @@
 # Pode YAML
 
+[![MIT licensed](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/Badgerati/Pode.Yaml/master/LICENSE.txt)
+[![Gitter](https://badges.gitter.im/Badgerati/Pode.svg)](https://gitter.im/Badgerati/Pode?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+[![PowerShell](https://img.shields.io/powershellgallery/dt/pode.yaml.svg?label=PowerShell&colorB=085298)](https://www.powershellgallery.com/packages/Pode.Yaml)
+
 This is an extension module for the [Pode](https://github.com/Badgerati/Pode) web server (v1.3.0+). It allows you to parse and send YAML requests and responses.
 
 ## Install
